@@ -4,11 +4,13 @@ package tasks;
 public class VisibilityProblem {
     private int value = 0;
 
-    public void set(int v) {
+    public synchronized void set(int v) {
         // TODO
+        value = v;
     }
 
-    public int get() {
+    public synchronized int get() {
+        System.out.println(value);
         return value;
     }
 }

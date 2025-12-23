@@ -4,11 +4,12 @@ package tasks;
 public class CounterWithoutRace {
     private int value = 0;
 
-    public void increment() {
+    public synchronized void increment() {
         // TODO
+        value++;
     }
 
-    public int get() {
+    public synchronized int get() {
         return value;
     }
 }

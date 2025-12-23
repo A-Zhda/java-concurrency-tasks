@@ -7,9 +7,31 @@ public class DeadlockExample {
 
     public void methodA() {
         // TODO
+        synchronized (lockA) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                throw new RuntimeException("Error" + e);
+            }
+
+            synchronized (lockB){
+                System.out.println("Завершено");
+            }
+        }
     }
 
-    public void methodB() {
+    public synchronized void methodB() {
         // TODO
+        synchronized (lockA) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                throw new RuntimeException("Error" + e);
+            }
+
+            synchronized (lockB) {
+                System.out.println("Завершено2");
+            }
+        }
     }
 }

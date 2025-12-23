@@ -6,9 +6,11 @@ public class CounterWithSynchronized {
 
     public void increment() {
         // TODO
+        synchronized(this){value++;};
     }
 
     public int get() {
         return value;
+
     }
 }
